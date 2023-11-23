@@ -16,11 +16,11 @@ class Adapter (private val fruits: MutableList<Fruit>, val context: Context) :  
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private val tvFruit: TextView = view.findViewById(R.id.tv_fruit)
         private val ivFruit: ImageView = view.findViewById(R.id.iv_fruit)
-        private val urlImagen: String = "https://png.pngtree.com/element_our/20190528/ourmid/pngtree-a-strawberry-image_1144087.jpg"
+        private val urlImage: String = "https://png.pngtree.com/element_our/20190528/ourmid/pngtree-a-strawberry-image_1144087.jpg"
 
         fun bind(fruit: Fruit) {
             tvFruit.text = fruit.name
-            Glide.with(context).load(urlImagen).into(ivFruit)
+            Glide.with(context).load(urlImage).into(ivFruit)
 
             view.setOnClickListener {
                 onItemClickListener(fruit)
@@ -28,8 +28,8 @@ class Adapter (private val fruits: MutableList<Fruit>, val context: Context) :  
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.fruit_item, parent, false)
-        return ViewHolder(view)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return ViewHolder(layoutInflater.inflate(R.layout.fruit_item, parent, false))
     }
 
     override fun getItemCount(): Int {
