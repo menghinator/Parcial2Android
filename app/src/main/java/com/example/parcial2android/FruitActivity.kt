@@ -2,11 +2,13 @@ package com.example.parcial2android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
-import java.net.ProtocolFamily
+import com.bumptech.glide.Glide
 
 class FruitActivity : AppCompatActivity() {
 
+    private lateinit var  ivFruit: ImageView
     private lateinit var tvName: TextView
     private lateinit var tvFamily: TextView
     private lateinit var tvGenus: TextView
@@ -24,6 +26,7 @@ class FruitActivity : AppCompatActivity() {
         val fruit = intent.getParcelableExtra<Fruit>("fruit")
         val nutrition = intent.getParcelableExtra<Nutrition>("nutrition")
 
+
         tvName = findViewById(R.id.tv_fruitName)
         tvFamily = findViewById(R.id.tv_family)
         tvGenus = findViewById(R.id.tv_genus)
@@ -33,6 +36,7 @@ class FruitActivity : AppCompatActivity() {
         tvFat = findViewById(R.id.tv_fat)
         tvSugar = findViewById(R.id.tv_sugar)
         tvProtein = findViewById(R.id.tv_protein)
+        ivFruit = findViewById(R.id.ivFruit)
 
 
         tvName.text = fruit?.name
@@ -44,5 +48,6 @@ class FruitActivity : AppCompatActivity() {
         tvFat.text = nutrition?.fat.toString()
         tvSugar.text = nutrition?.sugar.toString()
         tvProtein.text = nutrition?.protein.toString()
+        Glide.with(this).load(fruit?.image).into(ivFruit)
     }
 }

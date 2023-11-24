@@ -7,7 +7,7 @@
     tools:context=".FruitActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivFruit"
         android:layout_width="400dp"
         android:layout_height="250dp"
         android:layout_marginTop="4dp"
@@ -26,7 +26,7 @@
         android:text="Fruit Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/ivFruit" />
 
     <TextView
         android:id="@+id/textView5"

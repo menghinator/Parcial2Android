@@ -9,7 +9,8 @@ data class Fruit(
     val family: String,
     val order: String,
     val genus: String,
-    val nutritions: Nutrition
+    val nutritions: Nutrition,
+    var image: String
 ): Parcelable {
 
 }

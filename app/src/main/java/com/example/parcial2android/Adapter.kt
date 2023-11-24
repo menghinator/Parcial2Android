@@ -16,12 +16,20 @@ class Adapter (private val fruits: MutableList<Fruit>, val context: Context) :  
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private val tvFruit: TextView = view.findViewById(R.id.tv_fruit)
         private val ivFruit: ImageView = view.findViewById(R.id.iv_fruit)
-        private val urlImage: String = "https://png.pngtree.com/element_our/20190528/ourmid/pngtree-a-strawberry-image_1144087.jpg"
+        private val defaultImg: String = "https://static.vecteezy.com/system/resources/previews/027/144/592/original/fresh-tasty-mix-fruit-salad-isolated-on-transparent-background-png.png"
+        private val persimmonImg: String = "https://static.vecteezy.com/system/resources/previews/022/881/860/original/persimmon-transparent-background-with-generative-ai-png.png"
+        private val strawberryImg: String = "https://purepng.com/public/uploads/large/purepng.com-strawberryfruitsberryberriesstrawberrystrawberriesred-981524759547wuott.png"
+        private val bananaImg: String = "https://png.pngtree.com/png-clipart/20220716/ourmid/pngtree-banana-yellow-fruit-banana-skewers-png-image_5944324.png"
 
         fun bind(fruit: Fruit) {
             tvFruit.text = fruit.name
-            Glide.with(context).load(urlImage).into(ivFruit)
-
+            when (fruit.name){
+                "Persimmon" -> fruit.image = persimmonImg
+                "Strawberry" -> fruit.image = strawberryImg
+                "Banana" -> fruit.image = bananaImg
+                else -> fruit.image = defaultImg
+            }
+            Glide.with(context).load(fruit.image).into(ivFruit)
             view.setOnClickListener {
                 onItemClickListener(fruit)
             }
